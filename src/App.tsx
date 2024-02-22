@@ -1,24 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { loadProducts } from "./store/slice/productsSlice";
+import { useDispatch } from "react-redux";
+import { RootDispatch } from "./store/store";
+import ProductList from "./components/ProductList/ProductList";
 
 function App() {
+
+  const dispatch = useDispatch<RootDispatch>();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={() => dispatch(loadProducts())}>download!</button>
+      <ProductList/>
     </div>
   );
 }
